@@ -251,6 +251,8 @@ def early_stop(stopping_rounds, maximize=False, verbose=True):
             raise EarlyStopException(best_iteration)
     return callback
 
+
+
 def stopping_at(tolerance, maximize=False, verbose=True):
     """Create a callback that activates early stoppping.
     The difference between the best and the second best
