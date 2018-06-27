@@ -276,7 +276,6 @@ def stopping_at(tolerance, maximize=False, verbose=True):
     callback : function
         The requested callback function.
     """
-    import xgboost as xgb
     import numpy as np
     state = {}
     loss = []
@@ -331,10 +330,10 @@ def stopping_at(tolerance, maximize=False, verbose=True):
         if len(state) == 0:
             init(env)
         loss.append(env.evaluation_result_list[-1][1])
+        sort = sorted(loss)
         best_score = state['best_score']
         best_iteration = state['best_iteration']
         maximize_score = state['maximize_score']
-        sort = sorted(loss)
         if (maximize_score and score > best_score) or \
                 (not maximize_score and score < best_score):
             msg = '[%d]\t%s' % (
